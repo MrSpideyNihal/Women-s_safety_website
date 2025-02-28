@@ -1,0 +1,80 @@
+:root {
+    --safety-pink: #E91E63;
+    --trust-blue: #283593;
+    --emergency-red: #FF5252;
+    --safe-green: #4CAF50;
+    --text-dark: #212121;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-dark);
+}
+
+.navbar {
+    padding: 1rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+#emergencyBtn {
+    background-color: var(--emergency-red);
+    border-color: var(--emergency-red);
+    font-size: 1.5rem;
+    font-weight: 700;
+    min-height: 44px;
+    transition: all 0.3s ease;
+}
+
+#emergencyBtn:hover {
+    transform: scale(1.05);
+    background-color: #ff1744;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+    background-color: var(--trust-blue);
+    border-color: var(--trust-blue);
+    min-height: 44px;
+}
+
+.alert-success {
+    background-color: var(--safe-green);
+    color: white;
+}
+
+.alert-danger {
+    background-color: var(--emergency-red);
+    color: white;
+}
+
+#map {
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.alert-item {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.alert-item:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    #map {
+        height: 300px;
+    }
+}
