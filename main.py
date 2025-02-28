@@ -1,5 +1,6 @@
 import os
 import logging
+import pywhatkit as kit
 from flask import Flask, render_template, flash, redirect, url_for, request
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -25,8 +26,10 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 @login_manager.user_loader
+@login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return db.session.get(User, int(user_id))  # Updated for SQLAlchemy 2.0
+
 
 # Create tables if they don't exist
 with app.app_context():
@@ -112,7 +115,18 @@ def emergency():
         db.session.add(alert)
         db.session.commit()
 
-        flash('Emergency reported! Help is on the way.', 'success')
+        # Construct emergency message
+        emergency_message = f"\U0001F6A8 Emergency Alert! \U0001F6A8\n" \
+                            f"Location: https://www.google.com/maps?q={form.lat.data},{form.lng.data}\n" \
+                            f"Description: {form.description.data if form.description.data else 'No details provided.'}"
+        
+        # Send WhatsApp message
+        try:
+            phone_number = current_user.phone  # Ensure this is in the format +91XXXXXXXXXX
+            kit.sendwhatmsg_instantly(phone_number, emergency_message, wait_time=15)
+            flash('Emergency reported! Message sent on WhatsApp.', 'success')
+        except Exception as e:
+            flash(f'Failed to send WhatsApp message: {str(e)}', 'error')
     
     return redirect(url_for('home'))
 

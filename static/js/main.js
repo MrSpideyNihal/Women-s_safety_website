@@ -33,3 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 60000); // Update every minute
     }
 });
+fetch('/api/alerts')
+  .then(response => response.json())
+  .then(data => {
+      let alertContainer = document.getElementById('alert-list');
+      alertContainer.innerHTML = "";
+      data.forEach(alert => {
+          alertContainer.innerHTML += `<li class="alert-card"><strong>${alert.title}</strong> - ${alert.description} <br><small>${alert.timestamp}</small></li>`;
+      });
+  });
+
