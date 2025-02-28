@@ -54,5 +54,39 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% block scripts %}{% endblock %}
+
+    <nav class="navbar">
+        <h1>Women's Safety Platform</h1>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about fade-in">
+        <img src="https://www.ritzmagazine.in/wp-content/uploads/2019/01/women-safety-zones.jpg" alt="Women's Safety Awareness">
+        <h2>About Our Platform</h2>
+        <p>Our platform is dedicated to ensuring the safety of women by providing emergency reporting, location-based alerts, and safety resources.</p>
+    </section>
+
+    <!-- Safety Information Section -->
+    <section class="safety-info fade-in">
+        <h2>Safety Tips</h2>
+        <div class="card">
+            <h3>Stay Alert</h3>
+            <p>Always be aware of your surroundings, especially in unfamiliar places.</p>
+        </div>
+        <div class="card">
+            <h3>Share Your Location</h3>
+            <p>Keep a trusted contact informed about your whereabouts.</p>
+        </div>
+        <div class="card">
+            <h3>Emergency Contacts</h3>
+            <p>Save emergency numbers on your phone for quick access.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Women's Safety Platform | <a href="#">Privacy Policy</a></p>
+    </footer>
+
 </body>
 </html>

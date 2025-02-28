@@ -1,80 +1,144 @@
-:root {
-    --safety-pink: #E91E63;
-    --trust-blue: #283593;
-    --emergency-red: #FF5252;
-    --safe-green: #4CAF50;
-    --text-dark: #212121;
-}
 
+/* Professional UI with Minimalist Design */
 body {
-    font-family: 'Nunito', sans-serif;
-    color: var(--text-dark);
+    font-family: 'Inter', sans-serif;
+    background: #f8f9fa;
+    color: #222;
+    transition: background 0.3s ease-in-out;
+    margin: 0;
+    padding: 0;
 }
 
-.navbar {
-    padding: 1rem;
+/* Smooth fade-in effect */
+.fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s ease-in-out forwards;
 }
 
-.navbar-brand {
-    font-size: 1.5rem;
-    font-weight: 700;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-#emergencyBtn {
-    background-color: var(--emergency-red);
-    border-color: var(--emergency-red);
-    font-size: 1.5rem;
-    font-weight: 700;
-    min-height: 44px;
+/* Modern Button Styles */
+button {
     transition: all 0.3s ease;
+    padding: 12px 24px;
+    border-radius: 6px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-#emergencyBtn:hover {
-    transform: scale(1.05);
-    background-color: #ff1744;
+button:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
 }
 
+/* Elegant Navbar */
+.navbar {
+    transition: all 0.3s ease-in-out;
+    background: #ffffff;
+    padding: 15px 30px;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar.scrolled {
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Card Styling */
 .card {
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    margin: 20px;
 }
 
-.btn-primary {
-    background-color: var(--trust-blue);
-    border-color: var(--trust-blue);
-    min-height: 44px;
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.alert-success {
-    background-color: var(--safe-green);
-    color: white;
+/* About Section */
+.about {
+    text-align: center;
+    padding: 50px 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+    margin: 40px auto;
+    max-width: 800px;
 }
 
-.alert-danger {
-    background-color: var(--emergency-red);
-    color: white;
+.about img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    content: url('Women-s_safety_website-main/womensafety.jpg');
 }
 
-#map {
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+/* Safety Information Section */
+.safety-info {
+    text-align: center;
+    padding: 40px;
+    background: #eef2f7;
+    border-radius: 8px;
+    margin: 40px auto;
+    max-width: 1000px;
 }
 
-.alert-item {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
+.safety-info h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-.alert-item:last-child {
-    border-bottom: none;
+.safety-info .card {
+    display: inline-block;
+    width: 30%;
+    margin: 10px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-@media (max-width: 768px) {
-    .container {
-        padding: 0 15px;
-    }
-    
-    #map {
-        height: 300px;
-    }
+/* Footer Styling */
+.footer {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: 40px;
 }
+
+.footer a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+

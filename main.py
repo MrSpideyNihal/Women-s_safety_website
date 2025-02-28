@@ -34,11 +34,13 @@ with app.app_context():
 
 @app.route('/')
 def home():
-    form = EmergencyForm()  # Create an instance of EmergencyForm
+    form = EmergencyForm()
+    alerts = []
+    
     if current_user.is_authenticated:
         alerts = get_nearby_alerts(current_user.lat, current_user.lng)
-        return render_template('home.html', alerts=alerts, form=form)
-    return render_template('home.html', form=form)
+    
+    return render_template('home.html', alerts=alerts, form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -86,6 +88,12 @@ def logout():
 def emergency():
     form = EmergencyForm()
     if form.validate_on_submit():
+        # Update the current user's location with the reported coordinates
+        current_user.lat = form.lat.data
+        current_user.lng = form.lng.data
+        db.session.commit()
+
+        # Create the emergency record
         emergency = Emergency(
             user_id=current_user.id,
             lat=form.lat.data,
@@ -95,7 +103,7 @@ def emergency():
         db.session.add(emergency)
         db.session.commit()
 
-        # Create alert for nearby users
+        # Create an alert based on the emergency
         alert = Alert(
             emergency_id=emergency.id,
             lat=emergency.lat,
@@ -105,8 +113,8 @@ def emergency():
         db.session.commit()
 
         flash('Emergency reported! Help is on the way.', 'success')
+    
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5000, debug=True)
-
